@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nota Pembelian Multi Item</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nota/nota.css">
+</head>
+<body>
+<div class="container">
+  <!-- Form Input -->
+  <div class="card">
+    <h2>Form Nota Pembelian</h2>
+
+    <label>Nama Pembeli
+      <input id="buyerName" type="text" placeholder="contoh: Andi Santoso">
+    </label>
+
+    <label>No HP
+      <input id="buyerEmail" type="text" placeholder="contoh: 62853xxxxxx">
+    </label>
+
+    <div id="productList">
+      <label>Daftar Produk</label>
+    </div>
+    <button type="button" id="addItemBtn">+ Tambah Produk</button>
+
+    <label>Tanggal Pembelian
+      <input id="date" type="date">
+    </label>
+
+    <label>Total Pembayaran (opsional jika belum lunas)
+      <input id="paymentAmount" type="number" placeholder="Total dibayar">
+    </label>
+
+    <label>Upload Bukti Pembayaran
+      <input id="proofInput" type="file" accept="image/*">
+    </label>
+
+    <button id="updateBtn">Update Preview</button>
+    <button class="green" id="downloadBtn">Generate PDF</button>
+  </div>
+
+  <!-- Preview Nota -->
+  <div class="card preview">
+    <h2>Preview Nota</h2>
+    <div id="invoice">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div class="logo-box" id="logoBox">
+             <img src="nota/logo.png" alt="">
+          </div>
+          <div>
+            <strong>AESEL RESERVASI</strong><br>
+            <span class="small">Jasa reservasi JFT & SSW</span>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <strong>Nota Pembelian</strong><br>
+          <span class="small">No: <span id="invoiceNo">-</span></span><br>
+          <span class="small">Tanggal: <span id="invoiceDate">-</span></span><br>
+          <span class="small">Jatuh Tempo: <span id="in">20/11/2025</span></span>
+        </div>
+      </div>
+      <hr>
+      <div style="display:flex;justify-content:space-between;">
+        <div>
+          <span class="small">Kepada:</span><br>
+          <strong id="showBuyerName">-</strong><br>
+          <span class="small" id="showBuyerEmail">-</span>
+        </div>
+        <div style="text-align:right">
+          <span class="small">Status:</span><br>
+          <strong id="paymentStatus" style="color:#0b9b6e">-</strong>
+        </div>
+      </div>
+      <table id="invoiceTable">
+        <thead>
+          <tr><th>Deskripsi</th><th>Qty</th><th>Harga</th><th>Subtotal</th></tr>
+        </thead>
+        <tbody id="invoiceBody">
+          <tr><td colspan="4" class="small">Belum ada item</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <span class="small">Bukti Pembayaran:</span><br>
+          <div id="proofBox" class="proof"><span class="small">Belum ada</span></div>
+        </div>
+        <p>Informasi Pembayaran:<br>
+• BCA: 1481417509<br>
+• DANA: 0895346030735<br>
+• SeaBank: 901187166910<br>
+• an: Asep Ridwansyah<br><br>
+Terima kasih telah menggunakan layanan Aesel Reservasi.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="nota/nota.js"></script>
+</body>
+</html>
